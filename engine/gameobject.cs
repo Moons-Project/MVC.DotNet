@@ -20,7 +20,17 @@ namespace MVC.Engine {
 
       Engine.Add(this);
       // log to make thing visiable
-      System.Console.WriteLine($"Engine add Item {this.name}");
+      Screen.Log($"add item {this.name}", ColorType.Engine);
+    }
+
+    public GameObject(string name, Type behaviorType) {
+      this.name = name;
+      this.behavior = Activator.CreateInstance(behaviorType) as BaseBehavior;
+      this.behavior.Start();
+
+      Engine.Add(this);
+      // log to make thing visiable
+      Screen.Log($"add item {this.name}", ColorType.Engine);
     }
 
   }

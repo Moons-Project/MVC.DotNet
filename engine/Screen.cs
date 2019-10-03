@@ -3,9 +3,10 @@ using System;
 namespace MVC.Engine {
 
   public enum ColorType {
-    Green = ConsoleColor.Green,
-    Red = ConsoleColor.Red,
-    Yellow = ConsoleColor.Yellow
+    Default = ConsoleColor.Green,
+    Warning = ConsoleColor.Red,
+    Core = ConsoleColor.Blue,
+    Engine = ConsoleColor.Yellow,
   }
 
   public static class Screen {
@@ -19,7 +20,11 @@ namespace MVC.Engine {
       }
     
     public static void Log(string text, ColorType type) {
-      Log(text, (ConsoleColor)type);
+      Log(type + ": " + text + "\n", (ConsoleColor)type);
+    }
+
+    public static void Log(string text) {
+      Log(text, ColorType.Default);
     }
   }
 }
