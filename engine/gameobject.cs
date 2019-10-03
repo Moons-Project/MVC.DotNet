@@ -8,7 +8,7 @@ namespace MVC.Engine {
   /// </summary>
   public class GameObject {
 
-    public static List<GameObject> System = new List<GameObject>();
+    public static List<GameObject> Engine = new List<GameObject>();
 
     public string name;
     public BaseBehavior behavior;
@@ -16,8 +16,11 @@ namespace MVC.Engine {
     public GameObject(string name, BaseBehavior behavior) {
       this.name = name;
       this.behavior = behavior;
+      this.behavior.Start();
 
-      System.Add(this);
+      Engine.Add(this);
+      // log to make thing visiable
+      System.Console.WriteLine($"Engine add Item {this.name}");
     }
 
   }

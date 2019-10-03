@@ -28,7 +28,7 @@ namespace MVC.Core {
     }
 
     static Core() {
-      MainAssembly = Assembly.Load("Assembly-CSharp");
+      MainAssembly = Assembly.Load("MVC.DotNet");
       modelDict = new Dictionary<Type, object>();
       viewDict = new Dictionary<Type, object>();
       controllerDict = new Dictionary<Type, object>();
@@ -77,8 +77,10 @@ namespace MVC.Core {
         // check inherit
         // if (!controllerType.IsSubclassOfRawGeneric(typeof(Controller<,>)) &&
         //   !controllerType.IsSubclassOfRawGeneric(typeof(Controller<>))) {
-        if (!TypeExtension.IsSubClassOfRawGeneric(controllerType, typeof(Controller<,>)) &&
-          !TypeExtension.IsSubClassOfRawGeneric(controllerType, typeof(Controller<>))) {
+        if (!TypeExtension.IsSubClassOfRawGeneric(
+            controllerType, typeof(Controller<,>)) &&
+          !TypeExtension.IsSubClassOfRawGeneric(
+            controllerType, typeof(Controller<>))) {
           throw new CoreException($"[Core.GetController] The controller class named {controllerType.Name} doesn't inherit from Controller");
         }
 
