@@ -20,7 +20,7 @@ namespace MVC.Engine {
 
       Engine.Add(this);
       // log to make thing visiable
-      Screen.Log($"add item {this.name}", ColorType.Engine);
+      // Screen.Log($"add item {this.name}", ColorType.Engine);
     }
 
     public GameObject(string name, Type behaviorType) {
@@ -30,7 +30,7 @@ namespace MVC.Engine {
 
       Engine.Add(this);
       // log to make thing visiable
-      Screen.Log($"add item {this.name}", ColorType.Engine);
+      // Screen.Log($"add item {this.name}", ColorType.Engine);
     }
 
   }

@@ -24,26 +24,18 @@ namespace MVC.Core {
     }
 
     static Core() {
-      Screen.Log("Construction...", ColorType.Core);
-      Screen.Log("Version 0.0.1", ColorType.Core);
-
       MainAssembly = Assembly.Load("MVC.DotNet");
-      Screen.Log("Load assembly file finished", ColorType.Core);
 
       modelDict = new Dictionary<Type, object>();
       viewDict = new Dictionary<Type, object>();
       controllerDict = new Dictionary<Type, object>();
       commandDict = new Dictionary<Type, Delegate>();
 
-      Screen.Log("begin add  game object...", ColorType.Core);
       core = new GameObject("Core", new BaseBehavior());
       controllers = new GameObject("Controller", new BaseBehavior());
-      Screen.Log("add game object finished", ColorType.Core);
-      Screen.Log("Construction finished\n", ColorType.Core);
     }
 
     public static TModel GetModel<TModel>() where TModel : Model, new() {
-      Screen.Log($"Try get model {typeof(TModel).Name}");
 
       Object model = null;
       if (!modelDict.TryGetValue(typeof(TModel), out model)) {
@@ -97,7 +89,6 @@ namespace MVC.Core {
     }
 
     public static void Call<TCommand>(TCommand cmd) where TCommand : ICommand {
-      Screen.Log($"Try call command {typeof(TCommand).Name}", ColorType.Core);
 
       Type cmdType = typeof(TCommand);
       Delegate action = null;
@@ -106,7 +97,6 @@ namespace MVC.Core {
         Type controllerType = cmd.GetController();
         Object controller = GetController(cmd);
 
-        Screen.Log($"Try add new command {typeof(TCommand).Name}", ColorType.Core);
 
         MethodInfo info = controllerType.GetMethod($"On{cmd.GetType().Name}",
           BindingFlags.Public | BindingFlags.Instance);
@@ -117,7 +107,6 @@ namespace MVC.Core {
         action = info.CreateDelegate(typeof(Action<TCommand>), controller);
         commandDict.Add(cmdType, action);
 
-        Screen.Log($"Add new command finished", ColorType.Core);
       }
         (action as Action<TCommand>) (cmd);
     }

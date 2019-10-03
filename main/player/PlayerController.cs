@@ -17,9 +17,9 @@ using static PlayerCommand;
 
       public void OnCompareAttackCommand(CompareAttackCommand cmd) {
         System.Console.WriteLine(@$"
-        Your Attack: {this.Model.attack}
-        His Attack: {cmd.OtherAttack}
-        Result: {this.Model.attack > cmd.OtherAttack}"
+          Your Attack: {this.Model.attack}
+          His Attack: {cmd.OtherAttack}
+          Result: {this.Model.attack > cmd.OtherAttack}"
         );
       }
 

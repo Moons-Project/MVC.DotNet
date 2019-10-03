@@ -7,16 +7,15 @@ namespace MVC.Main {
     public override Type GetController() {
             return typeof(PlayerController);
     }
+  }
 
     public class PrintCommand : PlayerCommand { }
 
     public class CompareAttackCommand : PlayerCommand {
       public int OtherAttack {get; private set;}
 
-      public CompareAttackCommand (int OtherAttack) {
+      public CompareAttackCommand (int OtherAttack = 0) {
         this.OtherAttack = OtherAttack;
       }
     }
-
-  }
 }
