@@ -1,12 +1,10 @@
 ﻿using System;
+using MVC.Core;
 
-namespace MVC.DotNet
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+namespace MVC {
+  class Program {
+    static void Main(string[] args) {
+      Console.WriteLine("Hello World!");
     }
+  }
 }
